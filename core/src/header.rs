@@ -4,6 +4,7 @@
 
 use crate::error::{Error, Result};
 use crate::value::{PrimitiveValue, Value};
+use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 use std::cmp::Ordering;
 use std::fmt;
@@ -576,7 +577,7 @@ pub type ElementNumber = u16;
 /// a (group, element) pair. For this purpose, `Tag` also provides a method
 /// for converting it to a tuple. Both `(u16, u16)` and `[u16; 2]` can be
 /// efficiently converted to this type as well.
-#[derive(PartialEq, Eq, Hash, PartialOrd, Ord, Clone, Copy)]
+#[derive(PartialEq, Eq, Hash, PartialOrd, Ord, Clone, Copy, Serialize, Deserialize)]
 pub struct Tag(pub GroupNumber, pub ElementNumber);
 
 impl Tag {

@@ -9,6 +9,7 @@ use chrono::{Datelike, FixedOffset, Timelike};
 use itertools::Itertools;
 use num_traits::NumCast;
 use safe_transmute::to_bytes::transmute_to_bytes;
+use serde::{Deserialize, Serialize};
 use smallvec::SmallVec;
 use std::borrow::Cow;
 use std::str::FromStr;
@@ -49,7 +50,7 @@ pub type C<T> = SmallVec<[T; 2]>;
 /// [`smallvec`]: ../../smallvec/index.html
 /// [`C`]: ./type.C.html
 /// [`dicom_value!`]: ../macro.dicom_value.html
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone, Deserialize, Serialize)]
 pub enum PrimitiveValue {
     /// No data. Usually employed for zero-lengthed values.
     Empty,
